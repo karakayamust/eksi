@@ -1,6 +1,6 @@
 # encoding=utf8
 import sys
-#Turkce'ye ozgu karakaterler iceren basliklar icin:
+#Turkce'ye ozgu karakterler iceren basliklar icin:
 reload(sys)
 sys.setdefaultencoding('utf8')
 
