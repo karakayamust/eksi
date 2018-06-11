@@ -8,7 +8,7 @@ def hata(mesaj): #hata mesajini ekrana basan fonksiyon
 
 
 def httpIstek(url):#requests modulunu kullanarak web icerigini alir.
-    cevap=requests.get(url)
+    cevap = requests.get(url)
     if cevap.status_code != 200:
         hata("Sayfa su cevap kodunu dondu:", cevap.status_code)
         return None
@@ -26,8 +26,8 @@ def gundemGetir(html_cevap): #eksisozluk anasayfasinda sol taraftaki gundem menu
     return html_cevap.find("ul", attrs={"class": "topic-list partial"}).find_all("li", id=False)
 
 def istenenBasliklariGetir(gundem,anahtar_kelime,url): #verilen anahtar kelimeyi iceren basliklari getirir.
-    basliklar=[]
-    linkler=[]
+    basliklar = []
+    linkler = []
     for i in range(len(gundem)):
         #find fonksiyonu verilen pattern bulunamazsa "-1" varsayilan degerini donuyor.
         if (gundem[i].a.text.find(anahtar_kelime) != -1):
@@ -52,7 +52,7 @@ def sayfaSayisiBul(link): #birinci sayfada bulunan "pager"dan basliga ait kac sa
     return int(baslik.find("div", attrs={"class":"pager"})['data-pagecount'])
 
 def sayfaLinkiUret(link): #her sayfa icin url uretir.
-    linkler=[]
+    linkler = []
     son_sayfa=sayfaSayisiBul(link)
     link=link[:-1]
     for i in range(son_sayfa):
@@ -61,11 +61,11 @@ def sayfaLinkiUret(link): #her sayfa icin url uretir.
     return linkler
 
 def entryleriGetir(baslik): #her sayfanin icindeki tum enrtyleri getirir.
-    cevap1=[]
-    cevap2=[]
+    cevap1 = []
+    cevap2 = []
     entryler = []
     entry_no = []
-    tarih =[]
+    tarih = []
     sayfa_linkleri=sayfaLinkiUret(baslik)
     for link in sayfa_linkleri:
         s=htmlFormatla(httpIstek(link))
